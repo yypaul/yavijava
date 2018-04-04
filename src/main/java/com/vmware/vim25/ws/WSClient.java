@@ -87,7 +87,13 @@ public class WSClient extends SoapClient {
     }
 
     public Object invoke(String methodName, Argument[] paras, String returnType) throws RemoteException {
-        log.trace("Invoking method: " + methodName);
+
+        System.out.println("===============================");
+        System.out.println("Invoking method: " + methodName);
+        System.out.println("Cookie: " + this.getCookie());
+        System.out.println("Thumbprint: " + this.getServerThumbprint());
+        System.out.println("Class: " + this.getClass());
+
         String soapMsg = marshall(methodName, paras);
 
         InputStream is = null;
@@ -120,6 +126,8 @@ public class WSClient extends SoapClient {
 
     public StringBuffer invokeAsString(String methodName, Argument[] paras) throws RemoteException {
         String soapMsg = XmlGen.toXML(methodName, paras, this.vimNameSpace);
+
+        System.out.println("Invoking method: " + methodName);
 
         try {
             InputStream is = post(soapMsg);

@@ -19,7 +19,8 @@ public class ServiceInstanceTest {
     @Test
     public void testCreateServiceInstanceForUsernameAndPasswordNoTimeouts() {
         try {
-            TestServiceInstance si = new TestServiceInstance(new URL("https://some-vcenter-address/sdk"), "username", "password");
+            ServiceInstance si = new ServiceInstance(new URL("https://10.0.31.156/sdk"),
+                    "administrator", "Svm!1234", true);
 
             Assert.assertEquals(0, si.getConnectTimeout());
             Assert.assertEquals(0, si.getReadTimeout());
